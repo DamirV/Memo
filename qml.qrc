@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>GameBoard.qml</file>
+        <file>Card.qml</file>
+        <file>MainMenu.qml</file>
+        <file>GameInfo.qml</file>
+        <file>Game.qml</file>
+        <file>NewGameMenu.qml</file>
+    </qresource>
+</RCC>
