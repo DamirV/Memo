@@ -5,8 +5,8 @@ Window {
     id: root
     property int newDim
 
-    width: 640
-    height: 480
+    width: 600
+    height: 500
     visible: true
     title: qsTr("Memo")
 
@@ -45,28 +45,35 @@ Window {
             root.newDim = 2
             _game.startNewGame(root.newDim)
             _stackView.push(_game)
+            _mainMenu.continueEnabled(true)
         }
 
         onNewGame4x4: {
             root.newDim = 4
             _game.startNewGame(root.newDim)
             _stackView.push(_game)
+            _mainMenu.continueEnabled(true)
         }
 
         onNewGame6x6: {
             root.newDim = 6
             _game.startNewGame(root.newDim)
             _stackView.push(_game)
+            _mainMenu.continueEnabled(true)
         }
     }
 
     Game{
         id: _game
         visible: false
-
+        anchors.fill: parent
         onBack: {
             _stackView.pop()
             _stackView.pop()
+        }
+
+        onEndGame: {
+            _mainMenu.continueEnabled(false)
         }
     }
 

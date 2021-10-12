@@ -53,13 +53,14 @@ private:
     int condition;
     int score;
     int progress;
-    bool saved;
+    bool canSave;
     QTimer *timer;
 
     std::vector<int> generateValues();
     void fillData(const std::vector<int>&);
     void onTimerStoped();
     void checkCards();
+    void isEndGame();
 };
 
 #endif // GAMEBOARD_H

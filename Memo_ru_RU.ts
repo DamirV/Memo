@@ -4,20 +4,20 @@
 <context>
     <name>Game</name>
     <message>
-        <location filename="Game.qml" line="12"/>
+        <location filename="Game.qml" line="11"/>
         <source>Memo</source>
-        <translation>Мемо</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Game.qml" line="15"/>
-        <location filename="Game.qml" line="36"/>
+        <location filename="Game.qml" line="14"/>
+        <location filename="Game.qml" line="35"/>
         <source>Score: </source>
-        <translation>Счет: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="Game.qml" line="51"/>
+        <location filename="Game.qml" line="50"/>
         <source>The game is over, your score: </source>
-        <translation>Игра окончена, ваш счет: </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -25,53 +25,53 @@
     <message>
         <location filename="GameInfo.qml" line="22"/>
         <source>Back</source>
-        <translation>Назад</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="MainMenu.qml" line="23"/>
+        <location filename="MainMenu.qml" line="22"/>
         <source>New Game</source>
-        <translation>Новая игра</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainMenu.qml" line="41"/>
+        <location filename="MainMenu.qml" line="40"/>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="MainMenu.qml" line="56"/>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="MainMenu.qml" line="68"/>
         <source>Help</source>
-        <translation>Помощь</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>NewGameMenu</name>
     <message>
-        <location filename="NewGameMenu.qml" line="22"/>
+        <location filename="NewGameMenu.qml" line="20"/>
         <source>Back</source>
-        <translation>Назад</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="NewGameMenu.qml" line="39"/>
+        <location filename="NewGameMenu.qml" line="36"/>
         <source>New Game 2x2</source>
-        <translation>Новая игра 2х2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="NewGameMenu.qml" line="55"/>
+        <location filename="NewGameMenu.qml" line="52"/>
         <source>New Game 4x4</source>
-        <translation>Новая игра 4х4</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="NewGameMenu.qml" line="71"/>
+        <location filename="NewGameMenu.qml" line="68"/>
         <source>New Game 6x6</source>
-        <translation>Новая игра 6х6</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -79,7 +79,7 @@
     <message>
         <location filename="main.qml" line="11"/>
         <source>Memo</source>
-        <translation>Мемо</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

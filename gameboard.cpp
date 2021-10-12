@@ -7,11 +7,11 @@ GameBoard::GameBoard(QObject* parent)
     , condition(cardsNotPressed)
     , score(0)
     , progress(0)
-    , saved(false)
+    , canSave(true)
     , timer(nullptr)
 {
     timer = new QTimer(this);
-    generateModel(4);
+    //generateModel(4);
     connect(timer, &QTimer::timeout, this, &GameBoard::onTimerStoped);
 }
 
@@ -50,6 +50,7 @@ void GameBoard::generateModel(int _boardDimension)
     condition = cardsNotPressed;
     score = 0;
     progress = 0;
+    canSave = true;
 
     std::vector<int> values = generateValues();
     fillData(values);
@@ -62,11 +63,18 @@ void GameBoard::generateModel(int _boardDimension)
 
 void GameBoard::saveGame()
 {
+    if(timer->isActive()){
+        onTimerStoped();
+    }
+
     QSettings settings(ORGANIZATION, APPLICATION);
     settings.defaultFormat();
 
-    saved = true;
-    settings.setValue("saved", saved);
+    if(!canSave){
+        settings.setValue("saved", false);
+        return;
+    }
+    settings.setValue("saved", true);
 
     settings.setValue("boardDimension", boardDimension);
     settings.setValue("condition", condition);
@@ -85,17 +93,11 @@ void GameBoard::saveGame()
     }
 
     settings.endArray();
-
     emit saveCreated();
 }
 
 void GameBoard::loadGame()
 {
-
-    if(!checkSave()){
-        return;
-    }
-
     QSettings settings(ORGANIZATION, APPLICATION);
     settings.defaultFormat();
 
@@ -237,10 +239,15 @@ void GameBoard::checkCards()
         rawData[secondCardIndex].hide();
     }
 
-    if(progress == modelSize / 2){
-        saved = false;
-        emit endGame();
-    }
+    isEndGame();
 
     emit dataChanged(createIndex(0, 0), createIndex(modelSize, 0));
+}
+
+void GameBoard::isEndGame()
+{
+    if(progress == modelSize / 2){
+        canSave = false;
+        emit endGame();
+    }
 }

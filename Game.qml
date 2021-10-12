@@ -5,9 +5,8 @@ Page{
     id: root
 
     signal back
+    signal endGame
 
-    width: 640
-    height: 480
     visible: true
     title: qsTr("Memo")
 
@@ -49,6 +48,7 @@ Page{
 
         function endGame() {
             _gameInfo.mainText = qsTr("The game is over, your score: ")
+            root.endGame()
         }
     }
 }

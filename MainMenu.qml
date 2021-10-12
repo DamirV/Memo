@@ -19,7 +19,6 @@ Page {
 
        width: parent.width/2
        height: 50
-       font.pointSize: 1
        text: qsTr("New Game")
 
        onClicked: {
@@ -39,6 +38,7 @@ Page {
         height: 50
 
         text: qsTr("Continue")
+
         onClicked: {
             root.continueGame()
         }

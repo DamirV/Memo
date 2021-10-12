@@ -8,7 +8,6 @@ Page {
     signal newGame6x6
     signal back
 
-
     Button{
        id: _back
 
@@ -18,7 +17,6 @@ Page {
        width: 50
        height: 50
 
-       font.pointSize: 1
        text: qsTr("Back")
 
        onClicked: {
@@ -35,7 +33,6 @@ Page {
        width: parent.width/2
        height: 50
 
-       font.pointSize: 1
        text: qsTr("New Game 2x2")
 
        onClicked: {

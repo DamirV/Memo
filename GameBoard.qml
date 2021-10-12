@@ -8,6 +8,8 @@ GridView {
         id: _model
     }
 
+    interactive: false
+
     cellWidth: width / root.model.dimension
     cellHeight: height / root.model.dimension
 
