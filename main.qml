@@ -12,21 +12,23 @@ Window {
 
     StackView{
         id: _stackView
-
         anchors.fill: parent
-
         initialItem: _mainMenu
     }
 
     MainMenu{
         id: _mainMenu
 
-        anchors.fill: _stackView
+        Component.onCompleted: {
+            _mainMenu.continueEnabled(_game.checkSave())
+        }
+
         onNewGame: {
             _stackView.push(_newGameMenu)
         }
 
         onContinueGame:{
+            _game.continueGame()
             _stackView.push(_game)
         }
     }
@@ -34,8 +36,6 @@ Window {
     NewGameMenu{
         id: _newGameMenu
         visible: false
-
-        anchors.fill: _stackView
 
         onBack: {
             _stackView.pop()
@@ -63,7 +63,6 @@ Window {
     Game{
         id: _game
         visible: false
-        anchors.fill: _stackView
 
         onBack: {
             _stackView.pop()

@@ -7,6 +7,10 @@ Page {
     signal newGame
     signal continueGame
 
+    function continueEnabled(value){
+        _continue.enabled = value
+    }
+
     Button{
        id: _newGame
 
@@ -26,7 +30,7 @@ Page {
     Button{
         id: _continue
 
-        //enabled: false
+        enabled: false
 
         anchors.top: _newGame.bottom
         anchors.horizontalCenter: parent.horizontalCenter

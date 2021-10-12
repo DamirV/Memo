@@ -13,7 +13,15 @@ Page{
 
     function startNewGame(_newDim){
         _gameInfo.mainText = qsTr("Score: ")
-        _gameBoard.startNewGame(_newDim)
+        _gameBoard.model.generateModel(_newDim)
+    }
+
+    function continueGame(){
+        _gameBoard.model.loadGame()
+    }
+
+    function checkSave(){
+        return _gameBoard.model.checkSave()
     }
 
     GameInfo{
@@ -25,7 +33,8 @@ Page{
 
         onBack: {
             root.back()
-            _gameInfo.endGameText = qsTr("Score: ")
+            _gameInfo.mainText = qsTr("Score: ")
+            _gameBoard.model.saveGame()
         }
     }
 
@@ -39,7 +48,6 @@ Page{
         }
 
         function endGame() {
-            console.log("end game")
             _gameInfo.mainText = qsTr("The game is over, your score: ")
         }
     }

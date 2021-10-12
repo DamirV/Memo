@@ -7,10 +7,10 @@ GameBoard::GameBoard(QObject* parent)
     , condition(cardsNotPressed)
     , score(0)
     , progress(0)
+    , saved(false)
     , timer(nullptr)
 {
     timer = new QTimer(this);
-
     generateModel(4);
     connect(timer, &QTimer::timeout, this, &GameBoard::onTimerStoped);
 }
@@ -58,6 +58,96 @@ void GameBoard::generateModel(int _boardDimension)
 
     emit dimensionChanged();
     emit scoreChanged();
+}
+
+void GameBoard::saveGame()
+{
+    QSettings settings(ORGANIZATION, APPLICATION);
+    settings.defaultFormat();
+
+    saved = true;
+    settings.setValue("saved", saved);
+
+    settings.setValue("boardDimension", boardDimension);
+    settings.setValue("condition", condition);
+    settings.setValue("score", score);
+    settings.setValue("progress", progress);
+
+    settings.setValue("firstCardIndex", firstCardIndex);
+    settings.setValue("secondCardIndex", secondCardIndex);
+
+    settings.beginWriteArray("cards");
+
+    for(int i = 0; i < modelSize; ++i){
+        settings.setArrayIndex(i);
+        settings.setValue("cardValue", rawData[i].getValue());
+        settings.setValue("cardStatus", rawData[i].getStatus());
+    }
+
+    settings.endArray();
+
+    emit saveCreated();
+}
+
+void GameBoard::loadGame()
+{
+
+    if(!checkSave()){
+        return;
+    }
+
+    QSettings settings(ORGANIZATION, APPLICATION);
+    settings.defaultFormat();
+
+    this->beginResetModel();
+
+    rawData.clear();
+
+    boardDimension = settings.value("boardDimension").toInt();
+    modelSize = boardDimension * boardDimension;
+
+    condition = settings.value("condition").toInt();
+    score = settings.value("score").toInt();
+    progress = settings.value("progress").toInt();
+
+    firstCardIndex = settings.value("firstCardIndex").toInt();
+    secondCardIndex = settings.value("secondCardIndex").toInt();
+
+    settings.beginReadArray("cards");
+
+    for(int i = 0; i < modelSize; ++i){
+        settings.setArrayIndex(i);
+
+        rawData.push_back(Card(settings.value("cardValue").toInt()));
+
+        switch (settings.value("cardStatus").toInt()) {
+            case -1:
+                rawData[i].disable();
+            break;
+
+        case 0:
+            rawData[i].hide();
+            break;
+
+        default:
+            rawData[i].show();
+        }
+    }
+
+    settings.endArray();
+
+    this->endResetModel();
+
+    emit dimensionChanged();
+    emit scoreChanged();
+}
+
+bool GameBoard::checkSave()
+{
+    QSettings settings(ORGANIZATION, APPLICATION);
+    settings.defaultFormat();
+
+    return settings.value("saved").toBool();
 }
 
 void GameBoard::onCardClicked(int index)
@@ -148,6 +238,7 @@ void GameBoard::checkCards()
     }
 
     if(progress == modelSize / 2){
+        saved = false;
         emit endGame();
     }
 

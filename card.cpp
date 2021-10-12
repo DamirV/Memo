@@ -7,6 +7,10 @@ Card::Card(int _value)
 
 }
 
+int Card::getValue() const{
+    return value;
+}
+
 int Card::getStatus() const{
     return status;
 }

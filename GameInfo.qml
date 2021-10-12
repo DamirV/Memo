@@ -26,7 +26,6 @@ Rectangle{
 
     Label{
         id: _scoreLabel
-
         anchors.horizontalCenter: parent.horizontalCenter
 
         font.pointSize: 25
@@ -35,10 +34,9 @@ Rectangle{
 
     Label{
         id: _score
-
         anchors.left: _scoreLabel.right
 
         font.pointSize: 25
-        text: score
+        text: root.score
     }
 }

@@ -10,12 +10,12 @@
     </message>
     <message>
         <location filename="Game.qml" line="15"/>
-        <location filename="Game.qml" line="28"/>
+        <location filename="Game.qml" line="36"/>
         <source>Score: </source>
         <translation>Счет: </translation>
     </message>
     <message>
-        <location filename="Game.qml" line="43"/>
+        <location filename="Game.qml" line="51"/>
         <source>The game is over, your score: </source>
         <translation>Игра окончена, ваш счет: </translation>
     </message>
@@ -31,22 +31,22 @@
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="MainMenu.qml" line="19"/>
+        <location filename="MainMenu.qml" line="23"/>
         <source>New Game</source>
         <translation>Новая игра</translation>
     </message>
     <message>
-        <location filename="MainMenu.qml" line="37"/>
+        <location filename="MainMenu.qml" line="41"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
-        <location filename="MainMenu.qml" line="52"/>
+        <location filename="MainMenu.qml" line="56"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="MainMenu.qml" line="64"/>
+        <location filename="MainMenu.qml" line="68"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>

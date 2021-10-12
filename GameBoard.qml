@@ -8,14 +8,6 @@ GridView {
         id: _model
     }
 
-    function startNewGame(_newDim){
-        _model.generateModel(_newDim)
-    }
-
-    Component.onCompleted: {
-
-    }
-
     cellWidth: width / root.model.dimension
     cellHeight: height / root.model.dimension
 
