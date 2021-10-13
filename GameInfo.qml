@@ -5,8 +5,11 @@ Rectangle{
     id: root
     property int newWidth: 100
     property int score: 0
-    property string mainText: ""
+    property string scoreText: ""
+    property bool saveButtonVisable: false
+
     signal back
+    signal saveScore(int currentScore)
 
     width: newWidth
     height: _backButton.height
@@ -24,12 +27,30 @@ Rectangle{
         onClicked: root.back()
     }
 
+    Button{
+        id: _saveButton
+        visible: saveButtonVisable
+        enabled: saveButtonVisable
+        anchors.right: root.right
+
+        height: 50
+        width: 100
+
+        text: qsTr("Save score")
+
+        onClicked: {
+            root.saveScore(score)
+            saveButtonVisable = false
+        }
+
+    }
+
     Label{
         id: _scoreLabel
         anchors.horizontalCenter: parent.horizontalCenter
 
         font.pointSize: 25
-        text: root.mainText
+        text: root.scoreText
     }
 
     Label{

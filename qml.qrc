@@ -7,5 +7,8 @@
         <file>GameInfo.qml</file>
         <file>Game.qml</file>
         <file>NewGameMenu.qml</file>
+        <file>SettingsMenu.qml</file>
+        <file>LeaderMenu.qml</file>
+        <file>SaveLeaderMenu.qml</file>
     </qresource>
 </RCC>

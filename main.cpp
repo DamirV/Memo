@@ -5,6 +5,7 @@
 #include <QTranslator>
 
 #include "gameboard.h"
+#include "leaderboard.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +14,8 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
-    qmlRegisterType<GameBoard> ("MyModel", 1, 0, "GameBoardModel");
+    qmlRegisterType<GameBoard> ("MyGameBoardModel", 1, 0, "GameBoardModel");
+    qmlRegisterType<LeaderBoard> ("MyLeaderBoardModel", 1, 0, "LeaderBoardModel");
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -26,6 +28,9 @@ int main(int argc, char *argv[])
     }
 
     QQmlApplicationEngine engine;
+
+    QQmlContext* context = engine.rootContext();
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

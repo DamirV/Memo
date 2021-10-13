@@ -5,8 +5,8 @@ Window {
     id: root
     property int newDim
 
-    width: 600
-    height: 500
+    width: 700
+    height: 600
     visible: true
     title: qsTr("Memo")
 
@@ -30,6 +30,14 @@ Window {
         onContinueGame:{
             _game.continueGame()
             _stackView.push(_game)
+        }
+
+        onLeaderMenu: {
+            _stackView.push(_leaderMenu)
+        }
+
+        onSettingsMenu: {
+            _stackView.push(_settingsMenu)
         }
     }
 
@@ -74,6 +82,47 @@ Window {
 
         onEndGame: {
             _mainMenu.continueEnabled(false)
+        }
+
+        onSaveLeader: {
+            _saveLeaderMenu.startSave(currentScore, level)
+            _stackView.push(_saveLeaderMenu)
+        }
+    }
+
+    SettingsMenu{
+        id: _settingsMenu
+        visible: false
+
+        onBack: {
+            _stackView.pop()
+        }
+    }
+
+    LeaderMenu{
+        id: _leaderMenu
+        visible: false
+        onBack: {
+            _stackView.pop()
+        }
+    }
+
+    SaveLeaderMenu{
+        id: _saveLeaderMenu
+        visible: false
+
+        onCancelSave: {
+            _stackView.pop()
+            _stackView.pop()
+            _stackView.pop()
+        }
+
+        onCreateSave: {
+            _leaderMenu.createSave(value)
+
+            _stackView.pop()
+            _stackView.pop()
+            _stackView.pop()
         }
     }
 

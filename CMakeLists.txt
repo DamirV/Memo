@@ -21,6 +21,7 @@ set(PROJECT_SOURCES
         qml.qrc
         resources.qrc
         card.h card.cpp
+        leaderboard.h leaderboard.cpp
         gameboard.h gameboard.cpp
         ${TS_FILES}
 )

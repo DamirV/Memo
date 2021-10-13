@@ -15,9 +15,10 @@ GameBoard::GameBoard(QObject* parent)
     connect(timer, &QTimer::timeout, this, &GameBoard::onTimerStoped);
 }
 
-int GameBoard::rowCount(const QModelIndex &parent) const
+int GameBoard::rowCount(const QModelIndex &index) const
 {
-    Q_UNUSED(parent)
+    Q_UNUSED(index)
+
     return modelSize;
 }
 
@@ -123,7 +124,7 @@ void GameBoard::loadGame()
         rawData.push_back(Card(settings.value("cardValue").toInt()));
 
         switch (settings.value("cardStatus").toInt()) {
-            case -1:
+        case -1:
                 rawData[i].disable();
             break;
 

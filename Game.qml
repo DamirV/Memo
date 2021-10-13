@@ -6,12 +6,13 @@ Page{
 
     signal back
     signal endGame
+    signal saveLeader(int currentScore, int level)
 
     visible: true
     title: qsTr("Memo")
 
     function startNewGame(_newDim){
-        _gameInfo.mainText = qsTr("Score: ")
+        _gameInfo.scoreText = qsTr("Score: ")
         _gameBoard.model.generateModel(_newDim)
     }
 
@@ -32,8 +33,13 @@ Page{
 
         onBack: {
             root.back()
-            _gameInfo.mainText = qsTr("Score: ")
+            _gameInfo.scoreText = qsTr("Score: ")
+            _gameInfo.saveButtonVisable = false
             _gameBoard.model.saveGame()
+        }
+
+        onSaveScore: {
+            saveLeader(currentScore, _gameBoard.model.dimension)
         }
     }
 
@@ -47,7 +53,8 @@ Page{
         }
 
         function endGame() {
-            _gameInfo.mainText = qsTr("The game is over, your score: ")
+            _gameInfo.scoreText = qsTr("The game is over, your score: ")
+            _gameInfo.saveButtonVisable = true
             root.endGame()
         }
     }

@@ -6,6 +6,8 @@ Page {
 
     signal newGame
     signal continueGame
+    signal settingsMenu
+    signal leaderMenu
 
     function continueEnabled(value){
         _continue.enabled = value
@@ -45,7 +47,7 @@ Page {
     }
 
     Button{
-        id: _settings
+        id: _leaderMenu
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: _continue.bottom
@@ -53,19 +55,11 @@ Page {
         width: _newGame.width
         height: 50
 
-        text: qsTr("Settings")
-    }
+        text: qsTr("Leaderboard")
 
-    Button{
-        id: _help
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: _settings.bottom
-
-        width: _newGame.width
-        height: 50
-
-        text: qsTr("Help")
+        onClicked: {
+            root.leaderMenu()
+        }
     }
 }
 
